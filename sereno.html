@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sereno — Salão & Spa Botânico · Jardins, São Paulo</title>
+<meta name="description" content="Beleza em estado natural. Spa capilar, cortes e rituais botânicos no Sereno.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ========== IDENTIDADE SERENO ========== */
+:root{
+  --bone:#F1EEE3; --ivory:#FAF8F1; --forest:#22302A; --forest-2:#2C3C34;
+  --sage:#8CA287; --sage-soft:#C8D3C0; --blush:#E9D6CB; --terra:#B5502F;
+  --line:rgba(34,48,42,.16); --line-iv:rgba(250,248,241,.2);
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Jost",system-ui,sans-serif;
+  --ease:cubic-bezier(.25,.7,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{font-family:var(--sans);font-weight:400;font-size:16.5px;line-height:1.65;color:var(--forest);background:var(--bone);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--sage);color:var(--ivory)}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input{font-family:inherit;color:inherit}
+button{cursor:pointer;background:none;border:none}
+:focus-visible{outline:2px solid var(--sage);outline-offset:3px}
+body::after{content:"";position:fixed;inset:0;z-index:120;pointer-events:none;opacity:.035;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E")}
+.wrap{max-width:1260px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
+section{padding:clamp(4.5rem,9vw,7.5rem) 0;position:relative}
+.arch{border-radius:50% 50% 6px 6px / 30% 30% 6px 6px;overflow:hidden}
+
+/* micro-rótulos e títulos */
+.micro{font-size:.68rem;font-weight:500;letter-spacing:.34em;text-transform:uppercase;color:var(--sage);display:inline-flex;align-items:center;gap:.8rem}
+.micro::before{content:"✦";font-size:.6rem}
+.sec-head{text-align:center;max-width:640px;margin:0 auto clamp(2.6rem,6vw,4.5rem)}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.05;margin:.9rem 0 1rem}
+.sec-head h2 em{font-style:italic;color:var(--sage)}
+.sec-head p{font-weight:300;font-size:1rem;color:rgba(34,48,42,.68)}
+.dark{background:var(--forest);color:var(--ivory)}
+.dark .sec-head p{color:rgba(250,248,241,.6)}
+.dark .sec-head h2 em{color:var(--sage-soft)}
+
+/* botões pill */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.7rem;padding:1rem 2.2rem;border-radius:99px;
+  font-size:.82rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;border:1px solid var(--forest);
+  position:relative;overflow:hidden;isolation:z-index;transition:color .4s var(--ease),border-color .4s var(--ease)}
+.btn span{position:relative;z-index:2}
+.btn::before{content:"";position:absolute;inset:0;z-index:1;background:var(--forest);transform:translateY(101%);transition:transform .5s var(--ease);border-radius:99px}
+.btn:hover::before{transform:translateY(0)}
+.btn-fill{background:var(--forest);color:var(--ivory)}
+.btn-fill::before{background:var(--sage)}
+.btn-fill:hover{color:var(--forest);border-color:var(--sage)}
+.btn-ghost:hover{color:var(--ivory)}
+.btn-light{border-color:var(--ivory);color:var(--ivory)}
+.btn-light::before{background:var(--ivory)}
+.btn-light:hover{color:var(--forest)}
+.btn[disabled]{opacity:.35;cursor:not-allowed}
+.btn[disabled]::before{display:none}
+
+/* revelações */
+[data-reveal]{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0s)}
+[data-reveal].in{opacity:1;transform:none}
+.w{display:inline-block;filter:blur(14px);opacity:0;transform:translateY(24px);
+  transition:filter .9s var(--ease),opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--i,0)*.08s)}
+.in .w,.w.in{filter:blur(0);opacity:1;transform:none}
+
+/* barra de progresso */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--sage);z-index:140}
+
+/* ========== TOPO ========== */
+.topline{background:var(--forest);color:var(--sage-soft);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;overflow:hidden;padding:.5rem 0}
+.topline .mq{display:inline-flex;width:max-content;animation:mq 36s linear infinite;white-space:nowrap}
+.topline .mq i{font-style:normal;padding:0 1.4rem}
+@keyframes mq{to{transform:translateX(-50%)}}
+header.nav{position:sticky;top:0;z-index:100;transition:background .4s var(--ease),box-shadow .4s var(--ease)}
+header.nav.scrolled{background:rgba(250,248,241,.94);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+.nav-in{max-width:1400px;margin:0 auto;padding:1.1rem clamp(1.25rem,4vw,3rem);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem}
+.brand{font-family:var(--serif);font-size:1.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.brand small{display:block;font-family:var(--sans);font-size:.55rem;letter-spacing:.42em;text-transform:uppercase;color:var(--sage);font-weight:500}
+.nav-links{display:flex;gap:2.2rem;list-style:none;justify-self:center}
+.nav-links a{font-size:.78rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;position:relative;padding:.2rem 0}
+.nav-links a::after{content:"";position:absolute;left:50%;right:50%;bottom:0;height:1px;background:var(--sage);transition:all .4s var(--ease)}
+.nav-links a:hover::after{left:0;right:0}
+.nav-right{justify-self:end;display:flex;align-items:center;gap:1.2rem}
+.nav-right .btn{padding:.75rem 1.6rem;font-size:.72rem}
+.burger{display:none;flex-direction:column;gap:5px;padding:.5rem}
+.burger i{width:24px;height:1.5px;background:var(--forest);transition:.3s}
+.mmenu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--ivory);border-bottom:1px solid var(--line);padding:1rem clamp(1.25rem,4vw,3rem) 1.5rem;flex-direction:column;box-shadow:0 30px 50px -25px rgba(34,48,42,.35)}
+.mmenu.open{display:flex}
+.mmenu a{padding:.85rem 0;border-bottom:1px solid var(--line);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase}
+
+/* ========== HERO CAPA ========== */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(1.5rem,3vw,3rem) 0 0;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr minmax(300px,40%) 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center;width:100%}
+.hero-left h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.9rem,5.6vw,5.2rem);line-height:1.02;letter-spacing:-.01em;margin:1.2rem 0 1.8rem}
+.hero-left h1 em{font-style:italic;color:var(--sage)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:.9rem}
+.hero-right p{font-weight:300;color:rgba(34,48,42,.72);max-width:34ch;margin-bottom:1.6rem}
+.stats{display:flex;flex-direction:column;gap:.55rem}
+.stat{display:inline-flex;align-items:center;gap:.7rem;border:1px solid var(--line);border-radius:99px;padding:.5rem 1.1rem;font-size:.78rem;letter-spacing:.06em;background:rgba(250,248,241,.6);width:fit-content}
+.stat b{font-family:var(--serif);font-size:1.15rem;font-weight:500;color:var(--sage)}
+.hero-stage{position:relative;justify-self:center;width:100%}
+.hero-arch{position:relative;z-index:2;aspect-ratio:3/4;box-shadow:0 40px 80px -35px rgba(34,48,42,.5)}
+.hero-arch img{width:100%;height:100%;object-fit:cover;animation:kb 20s var(--ease) infinite alternate}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.14) translateY(-2%)}}
+.giant{position:absolute;top:38%;left:50%;transform:translate(-50%,-50%);z-index:1;white-space:nowrap;
+  font-family:var(--serif);font-weight:500;font-size:clamp(5.5rem,15.5vw,14rem);letter-spacing:.06em;color:transparent;
+  -webkit-text-stroke:1px rgba(34,48,42,.28);pointer-events:none;user-select:none}
+.hero-circle{position:absolute;z-index:3;left:-16%;bottom:12%;width:31%;border-radius:50%;border:6px solid var(--ivory);overflow:hidden;aspect-ratio:1;box-shadow:0 20px 40px -15px rgba(34,48,42,.45);animation:floaty 7s ease-in-out infinite}
+.hero-circle img{width:100%;height:100%;object-fit:cover}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.vert{position:absolute;right:-2.6rem;top:50%;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;
+  font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(34,48,42,.5);display:flex;align-items:center;gap:1rem}
+.vert::after{content:"";width:1px;height:52px;background:rgba(34,48,42,.35);animation:hint 2.4s var(--ease) infinite}
+@keyframes hint{0%,100%{transform:scaleY(.4);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+.hero-strip{margin-top:clamp(2.5rem,5vw,4.5rem);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}
+.hero-strip div{padding:1.2rem 1.4rem;font-size:.8rem;letter-spacing:.08em;color:rgba(34,48,42,.7);border-right:1px solid var(--line)}
+.hero-strip div:last-child{border-right:none}
+.hero-strip b{color:var(--forest);font-weight:500}
+.hero-strip .g{color:var(--sage)}
+
+/* ========== FAIXA MARQUEE ========== */
+.band{background:var(--forest);padding:1.3rem 0;overflow:hidden;border-block:1px solid var(--forest)}
+.band .mq{display:inline-flex;width:max-content;animation:mq 30s linear infinite;white-space:nowrap}
+.band .mq i{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--ivory);padding:0 1.6rem;opacity:.92}
+.band .mq i.s{color:var(--sage-soft);font-style:normal;font-size:1rem}
+
+/* ========== TRATAMENTOS (arcos) ========== */
+.treat{background:var(--ivory)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.4rem,3vw,2.4rem)}
+.svc{background:var(--ivory);border:1px solid var(--line);padding:1rem 1rem 1.6rem;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s}
+.svc:nth-child(even){transform:translateY(40px)}
+.svc:hover{transform:translateY(-6px);box-shadow:0 36px 60px -30px rgba(34,48,42,.35);border-color:var(--sage)}
+.svc:nth-child(even):hover{transform:translateY(30px)}
+.svc .arch{aspect-ratio:3/4;margin-bottom:1.3rem}
+.svc .arch img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.svc:hover .arch img{transform:scale(1.07)}
+.svc-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.svc-top h3{font-family:var(--serif);font-weight:500;font-size:1.55rem;line-height:1.15}
+.svc-top .pr{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--sage);white-space:nowrap}
+.svc p{font-weight:300;font-size:.88rem;color:rgba(34,48,42,.65);margin:.5rem 0 1.1rem}
+.svc-foot{display:flex;justify-content:space-between;align-items:center;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(34,48,42,.5)}
+.svc-book{letter-spacing:.2em;text-transform:uppercase;font-size:.72rem;font-weight:500;color:var(--forest);border-bottom:1px solid var(--sage);padding-bottom:2px;transition:color .3s}
+.svc-book:hover{color:var(--sage)}
+
+/* ========== EXPERIÊNCIA (hover troca imagem) ========== */
+.exp-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2.5rem,6vw,6rem);align-items:start}
+.exp-left{position:sticky;top:110px}
+.exp-left h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.06;margin:1rem 0 1.2rem}
+.exp-left h2 em{font-style:italic;color:var(--sage)}
+.exp-left>p{font-weight:300;color:rgba(250,248,241,.6);max-width:36ch}
+.exp-stage{position:relative;aspect-ratio:3/4;margin-top:2.2rem;border:1px solid var(--line-iv);padding:10px}
+.exp-stage .arch{position:relative;width:100%;height:100%}
+.exp-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .7s var(--ease),transform .9s var(--ease)}
+.exp-stage img.on{opacity:1;transform:scale(1)}
+.exp-item{display:grid;grid-template-columns:4.5rem 1fr;gap:1.6rem;padding:2.1rem 1.2rem;border-top:1px solid var(--line-iv);
+  cursor:default;transition:background .4s var(--ease),padding-left .4s var(--ease);border-radius:4px}
+.exp-item:last-child{border-bottom:1px solid var(--line-iv)}
+.exp-item:hover,.exp-item.active{background:rgba(140,162,135,.12);padding-left:2rem}
+.exp-num{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--sage-soft)}
+.exp-item h3{font-family:var(--serif);font-weight:500;font-size:1.6rem;margin-bottom:.4rem}
+.exp-item p{font-weight:300;font-size:.92rem;color:rgba(250,248,241,.62);max-width:50ch}
+.exp-item .mob-img{display:none;margin-top:1rem;aspect-ratio:16/9;object-fit:cover;border-radius:4px}
+
+/* ========== GALERIA ========== */
+.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:1.2rem}
+.gal figure{position:relative;overflow:hidden;border-radius:4px}
+.gal figure img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.gal figure:hover img{transform:scale(1.08)}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 1.1rem .9rem;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ivory);background:linear-gradient(transparent,rgba(34,48,42,.8));transform:translateY(100%);transition:transform .5s var(--ease)}
+.gal figure:hover figcaption{transform:none}
+.g1{grid-column:span 2;grid-row:span 2}
+.g2{grid-column:span 2}
+.g3{grid-column:span 2}
+.g4{grid-column:span 2}
+.g5{grid-column:span 2}
+.g1 .arch,.g4 .arch{height:100%}
+.gal .arch{width:100%;height:100%;border-radius:50% 50% 4px 4px / 22% 22% 4px 4px}
+.gal .sq .arch{border-radius:4px}
+
+/* ========== EQUIPE ========== */
+.team{background:var(--bone)}
+.team-row{display:flex;gap:clamp(1.5rem,4vw,3.5rem);justify-content:center;flex-wrap:wrap}
+.person{text-align:center;width:250px}
+.person .ring{width:210px;height:210px;margin:0 auto 1.2rem;border-radius:50%;border:1px solid var(--sage);padding:9px;transition:transform .5s var(--ease)}
+.person:hover .ring{transform:translateY(-8px) rotate(4deg)}
+.person .ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;filter:grayscale(.85);transition:filter .6s var(--ease)}
+.person:hover .ring img{filter:none}
+.person h3{font-family:var(--serif);font-weight:500;font-size:1.5rem}
+.person span{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sage);display:block;margin:.2rem 0 .6rem}
+.person p{font-weight:300;font-size:.82rem;color:rgba(34,48,42,.6)}
+
+/* ========== DEPOIMENTOS (slider) ========== */
+.quotes{background:var(--forest);color:var(--ivory);text-align:center;overflow:hidden}
+.q-stage{position:relative;min-height:270px;max-width:820px;margin:0 auto}
+.q-slide{position:absolute;inset:0;opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease);pointer-events:none}
+.q-slide.on{opacity:1;transform:none;pointer-events:auto}
+.q-slide blockquote{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.45rem,3.2vw,2.3rem);line-height:1.4}
+.q-slide blockquote::before{content:"“";color:var(--sage-soft)}
+.q-slide blockquote::after{content:"”";color:var(--sage-soft)}
+.q-who{margin-top:1.4rem;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(250,248,241,.55)}
+.q-who b{color:var(--sage-soft);font-weight:500}
+.q-stars{color:var(--sage-soft);letter-spacing:.35em;margin-top:.6rem;font-size:.9rem}
+.q-dots{display:flex;gap:.7rem;justify-content:center;margin-top:2.2rem}
+.q-dot{width:9px;height:9px;border-radius:50%;border:1px solid var(--sage-soft);background:transparent;transition:all .35s var(--ease);padding:0}
+.q-dot.on{background:var(--sage-soft);transform:scale(1.25)}
+.q-chip{display:inline-flex;gap:.6rem;align-items:center;border:1px solid var(--line-iv);border-radius:99px;padding:.55rem 1.3rem;font-size:.75rem;letter-spacing:.14em;margin-top:2.6rem;color:rgba(250,248,241,.75)}
+.q-chip b{color:var(--sage-soft)}
+
+/* ========== RITUAIS (pacotes) ========== */
+.pkg{display:grid;grid-template-columns:1.3fr 2fr auto auto;gap:2rem;align-items:center;padding:2rem 1.6rem;border-top:1px solid var(--line);transition:background .4s var(--ease)}
+.pkg:last-of-type{border-bottom:1px solid var(--line)}
+.pkg:hover{background:rgba(200,211,192,.28)}
+.pkg h3{font-family:var(--serif);font-weight:500;font-size:1.7rem}
+.pkg h3 small{display:block;font-family:var(--sans);font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--sage);font-weight:500;margin-top:.25rem}
+.pkg .inc{font-weight:300;font-size:.88rem;color:rgba(34,48,42,.68)}
+.pkg .inc b{color:var(--forest);font-weight:500}
+.pkg .pv{font-family:var(--serif);font-style:italic;font-size:1.7rem;white-space:nowrap}
+.pkg .btn{padding:.8rem 1.6rem;font-size:.7rem;white-space:nowrap}
+.pkg-feat{background:var(--forest);color:var(--ivory);border-color:var(--forest)!important;border-radius:6px;margin:1.2rem 0;padding:2.6rem 2rem;position:relative;overflow:hidden}
+.pkg-feat:hover{background:var(--forest-2)}
+.pkg-feat h3 small{color:var(--sage-soft)}
+.pkg-feat .inc{color:rgba(250,248,241,.7)}
+.pkg-feat .inc b{color:var(--ivory)}
+.pkg-feat .pv{color:var(--sage-soft)}
+.pkg-tag{position:absolute;top:1.1rem;right:1.3rem;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sage-soft)}
+.pkg-note{text-align:center;margin-top:2rem;font-family:var(--serif);font-style:italic;color:rgba(34,48,42,.55)}
+
+/* ========== AGENDAR ========== */
+.book{background:var(--ivory)}
+.book-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.book-visual{position:relative}
+.book-visual .arch{aspect-ratio:4/5;box-shadow:0 35px 70px -35px rgba(34,48,42,.5)}
+.book-visual img{width:100%;height:100%;object-fit:cover}
+.book-visual .ov{position:absolute;left:1.2rem;right:1.2rem;bottom:1.4rem;background:rgba(34,48,42,.86);backdrop-filter:blur(6px);color:var(--ivory);padding:1.2rem 1.4rem;border-radius:4px}
+.book-visual .ov b{font-family:var(--serif);font-size:1.25rem;font-weight:500;display:block}
+.book-visual .ov span{font-size:.78rem;color:rgba(250,248,241,.65)}
+.info-rows{margin-top:1.6rem;border-top:1px solid var(--line)}
+.info-rows div{display:flex;gap:1rem;padding:.85rem .2rem;border-bottom:1px solid var(--line);font-size:.88rem;align-items:baseline}
+.info-rows b{font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--sage);min-width:88px;font-weight:500}
+.form-card{background:var(--bone);border:1px solid var(--line);padding:clamp(1.5rem,3.4vw,2.6rem);border-radius:6px;box-shadow:0 30px 60px -40px rgba(34,48,42,.4);position:relative}
+.fgroup{margin-bottom:1.6rem}
+.fgroup>.micro{margin-bottom:.8rem}
+.pills{display:flex;flex-wrap:wrap;gap:.55rem}
+.pill{border:1px solid var(--line);border-radius:99px;padding:.6rem 1.15rem;font-size:.83rem;font-weight:400;transition:all .3s var(--ease);background:var(--ivory)}
+.pill small{opacity:.55;margin-left:.4rem;font-size:.75rem}
+.pill:hover{border-color:var(--sage);transform:translateY(-2px)}
+.pill.sel{background:var(--forest);color:var(--ivory);border-color:var(--forest)}
+.pill.sel small{color:var(--sage-soft);opacity:1}
+.days,.slots{display:flex;flex-wrap:wrap;gap:.55rem}
+.day{border:1px solid var(--line);border-radius:10px;padding:.55rem .9rem;text-align:center;background:var(--ivory);transition:all .3s var(--ease);min-width:66px}
+.day small{display:block;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(34,48,42,.5)}
+.day b{font-family:var(--serif);font-size:1.3rem;font-weight:500;display:block;line-height:1.2}
+.day:hover:not([disabled]){border-color:var(--sage);transform:translateY(-2px)}
+.day.sel{background:var(--forest);color:var(--ivory);border-color:var(--forest)}
+.day.sel small{color:var(--sage-soft)}
+.day[disabled]{opacity:.4;cursor:not-allowed}
+.slot{border:1px solid var(--line);border-radius:8px;padding:.55rem .95rem;font-size:.85rem;background:var(--ivory);transition:all .3s var(--ease)}
+.slot:hover:not([disabled]){border-color:var(--sage);transform:translateY(-2px)}
+.slot.sel{background:var(--sage);color:var(--forest);border-color:var(--sage);font-weight:500}
+.slot[disabled]{opacity:.32;text-decoration:line-through;cursor:not-allowed}
+.hint{font-size:.82rem;color:rgba(34,48,42,.5);font-weight:300}
+.names{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+.fld label{display:block;font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--sage);margin-bottom:.4rem;font-weight:500}
+.fld input{width:100%;border:none;border-bottom:1px solid var(--line);background:transparent;padding:.7rem 0;font-size:1rem;font-weight:300;transition:border-color .3s}
+.fld input:focus{outline:none;border-color:var(--sage)}
+.summary{background:var(--ivory);border:1px dashed var(--sage);border-radius:6px;padding:1.1rem 1.3rem;font-size:.86rem;margin-bottom:1.4rem}
+.summary div{display:flex;justify-content:space-between;gap:1rem;padding:.32rem 0}
+.summary span{color:rgba(34,48,42,.55);font-weight:300}
+.summary b{font-weight:500;text-align:right}
+.ferr{color:var(--terra);font-size:.8rem;min-height:1.3rem;margin-top:.7rem;font-weight:400}
+.form-card .btn{width:100%}
+.needs{animation:shake .5s var(--ease)}
+@keyframes shake{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-6px)}40%,60%{transform:translateX(6px)}}
+.done{display:none;text-align:center;padding:2rem 0}
+.done.show{display:block;animation:panelIn .6s var(--ease)}
+@keyframes panelIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.done svg{width:86px;height:86px;margin:0 auto 1.3rem;display:block}
+.done circle,.done path{fill:none;stroke:var(--sage);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100}
+.done.draw circle{animation:draw 1s var(--ease) forwards}
+.done.draw path{animation:draw .6s var(--ease) .7s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.done h3{font-family:var(--serif);font-weight:500;font-size:2rem}
+.done .code{font-family:var(--serif);font-style:italic;color:var(--sage);font-size:1.3rem;margin:.4rem 0 1rem}
+.done p{font-weight:300;font-size:.9rem;color:rgba(34,48,42,.65);max-width:40ch;margin:0 auto 1.6rem}
+.done-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.done-btns .btn{width:auto}
+
+/* ========== FAQ ========== */
+.faq{max-width:780px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;text-align:left;padding:1.5rem .3rem;
+  font-family:var(--serif);font-size:clamp(1.15rem,2.2vw,1.45rem);font-weight:500}
+.faq-q .pm{width:26px;height:26px;border:1px solid var(--sage);border-radius:50%;display:grid;place-items:center;flex-shrink:0;
+  font-size:.95rem;color:var(--sage);transition:transform .45s var(--ease),background .35s,color .35s}
+.faq-item.open .pm{transform:rotate(135deg);background:var(--forest);color:var(--ivory);border-color:var(--forest)}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--ease)}
+.faq-item.open .faq-a{grid-template-rows:1fr}
+.faq-a>div{overflow:hidden}
+.faq-a p{padding:0 3rem 1.5rem .3rem;font-weight:300;font-size:.93rem;color:rgba(34,48,42,.68)}
+
+/* ========== FOOTER ========== */
+footer{background:var(--forest);color:var(--ivory);padding-top:4.5rem;overflow:hidden}
+.news{display:flex;gap:.8rem;max-width:480px;margin:0 auto 4rem;align-items:center;border-bottom:1px solid var(--line-iv);padding-bottom:.8rem}
+.news input{flex:1;background:transparent;border:none;color:var(--ivory);font-size:.95rem;font-weight:300;padding:.5rem .2rem}
+.news input::placeholder{color:rgba(250,248,241,.4)}
+.news input:focus{outline:none}
+.news button{color:var(--sage-soft);font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;transition:color .3s}
+.news button:hover{color:var(--ivory)}
+.foot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.4rem;padding-bottom:3rem;border-bottom:1px solid var(--line-iv)}
+.foot-grid h5{font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;color:var(--sage-soft);margin-bottom:1.1rem;font-weight:500}
+.foot-grid p,.foot-grid a{display:block;font-weight:300;font-size:.86rem;color:rgba(250,248,241,.62);line-height:2.1}
+.foot-grid a:hover{color:var(--sage-soft)}
+.foot-word{font-family:var(--serif);font-weight:500;font-size:clamp(3.6rem,13vw,11rem);letter-spacing:.1em;text-align:center;line-height:1.15;
+  color:transparent;-webkit-text-stroke:1px rgba(250,248,241,.28);padding:1.6rem 0 1rem;user-select:none;transition:color 1.2s var(--ease)}
+.foot-word:hover{color:rgba(250,248,241,.08)}
+.foot-base{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.3rem 0 1.8rem;font-size:.7rem;letter-spacing:.12em;color:rgba(250,248,241,.4)}
+
+/* fixos */
+.fab{position:fixed;right:1.3rem;bottom:1.3rem;z-index:90;background:var(--forest);color:var(--ivory);border-radius:99px;
+  padding:1rem 1.7rem;font-size:.75rem;letter-spacing:.24em;text-transform:uppercase;box-shadow:0 16px 34px -12px rgba(34,48,42,.55);
+  transform:translateY(160%);opacity:0;transition:transform .5s var(--ease),opacity .4s}
+.fab.show{transform:none;opacity:1}
+.toast{position:fixed;left:50%;bottom:2rem;transform:translate(-50%,160%);background:var(--forest);color:var(--ivory);border-left:3px solid var(--sage);
+  padding:.95rem 1.7rem;border-radius:4px;font-size:.85rem;font-weight:300;z-index:130;transition:transform .5s var(--ease);max-width:90vw}
+.toast.show{transform:translate(-50%,0)}
+
+/* ========== RESPONSIVO ========== */
+@media(max-width:1080px){
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .gal{grid-template-columns:repeat(4,1fr)}
+  .g1{grid-column:span 2;grid-row:span 1}
+}
+@media(max-width:920px){
+  .nav-links,.nav-right .btn{display:none}
+  .burger{display:flex}
+  .hero-grid{grid-template-columns:1fr;text-align:left;gap:2.5rem}
+  .hero{min-height:auto;padding-top:2.5rem}
+  .hero-right p{max-width:none}
+  .hero-stage{max-width:460px;margin:0 auto;width:100%}
+  .vert{display:none}
+  .giant{font-size:clamp(4rem,20vw,9rem);top:44%}
+  .hero-strip{grid-template-columns:1fr 1fr}
+  .hero-strip div:nth-child(2){border-right:none}
+  .exp-grid{grid-template-columns:1fr}
+  .exp-left{position:static}
+  .exp-stage{display:none}
+  .exp-item .mob-img{display:block}
+  .book-grid{grid-template-columns:1fr}
+  .pkg{grid-template-columns:1fr;text-align:left;gap:.9rem}
+  .pkg .btn{justify-self:start}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .svc-grid{grid-template-columns:1fr}
+  .svc:nth-child(even),.svc:nth-child(even):hover{transform:none}
+  .gal{grid-template-columns:1fr 1fr}
+  .names{grid-template-columns:1fr}
+  .hero-strip{grid-template-columns:1fr}
+  .hero-strip div{border-right:none;border-bottom:1px solid var(--line)}
+}
+
+/* ========== MOVIMENTO REDUZIDO ========== */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  [data-reveal],.w{opacity:1!important;transform:none!important;filter:none!important}
+  .mq{transform:none!important}
+  .topline,.band{overflow-x:auto}
+}
+</style>
+</head>
+<body>
+
+<div id="progress" aria-hidden="true"></div>
+
+<!-- topo -->
+<div class="topline" aria-hidden="true"><div class="mq" id="topMq"></div></div>
+
+<!-- navegação -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#inicio">Sereno<small>salão &amp; spa botânico</small></a>
+    <ul class="nav-links">
+      <li><a href="#tratamentos">Tratamentos</a></li>
+      <li><a href="#experiencia">Experiência</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#equipe">Equipe</a></li>
+      <li><a href="#rituais">Rituais</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#agendar" class="btn btn-fill"><span>Agendar</span></a>
+      <button class="burger" id="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+    </div>
+  </div>
+  <nav class="mmenu" id="mmenu">
+    <a href="#tratamentos">Tratamentos</a><a href="#experiencia">Experiência</a><a href="#galeria">Galeria</a>
+    <a href="#equipe">Equipe</a><a href="#rituais">Rituais</a><a href="#faq">FAQ</a><a href="#agendar" style="color:var(--sage)">Agendar ✦</a>
+  </nav>
+</header>
+
+<!-- ========== CAPA ========== -->
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div class="hero-left">
+      <span class="micro" data-reveal>Spa botânico · Jardins · SP</span>
+      <h1 id="heroH1">Beleza em <em>estado natural</em></h1>
+      <div class="hero-ctas" data-reveal style="--d:.5s">
+        <a href="#agendar" class="btn btn-fill"><span>Reservar meu ritual</span></a>
+        <a href="#tratamentos" class="btn btn-ghost"><span>Tratamentos</span></a>
+      </div>
+    </div>
+    <div class="hero-stage" data-reveal style="--d:.2s">
+      <div class="giant" id="giant" aria-hidden="true">SERENO</div>
+      <figure class="arch hero-arch">
+        <img src="https://picsum.photos/seed/sereno-botanical-spa/760/1010" alt="Interior do spa botânico Sereno">
+      </figure>
+      <figure class="hero-circle">
+        <img src="https://picsum.photos/seed/herbal-hair-detail/340/340" alt="Detalhe de ritual capilar herbal">
+      </figure>
+    </div>
+    <div class="hero-right" data-reveal style="--d:.35s">
+      <p>Um salão que respira: ativos vegetais, luz natural, chá fresco e tempo de sobra para você. Aqui, beleza não é pressa — é cuidado.</p>
+      <div class="stats">
+        <span class="stat"><b>4,9</b> ★ · 1.800 avaliações</span>
+        <span class="stat"><b>9</b> anos de casa</span>
+        <span class="stat"><b>100%</b> produtos veganos</span>
+      </div>
+      <div class="vert" aria-hidden="true">role para descobrir</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="hero-strip" data-reveal style="--d:.5s">
+      <div><b>R. das Oliveiras, 88</b><br><span class="g">Jardins — São Paulo</span></div>
+      <div><b>Ter–Dom</b><br><span class="g">9h às 20h · seg. fechado</span></div>
+      <div><b>(11) 99123-4567</b><br><span class="g">WhatsApp · resposta em 5 min</span></div>
+      <div><b>Valet no local</b><br><span class="g">estacionamento gratuito</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- faixa -->
+<div class="band" aria-hidden="true"><div class="mq" id="bandMq"></div></div>
+
+<!-- ========== TRATAMENTOS ========== -->
+<section class="treat" id="tratamentos">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="micro">O menu verde</span>
+      <h2>Tratamentos que <em>respiram</em></h2>
+      <p>Fórmulas botânicas, técnicas autorais e o tempo que o seu cabelo merece. Reserve direto pelo card.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc" data-reveal>
+        <div class="arch"><img src="https://picsum.photos/seed/botanical-haircut/560/740" alt="Corte botânico" loading="lazy"></div>
+        <div class="svc-top"><h3>Corte Botânico</h3><span class="pr">R$ 190</span></div>
+        <p>Desenho de corte sob medida com lavagem herbal e finalização natural. 60 min de pura calma.</p>
+        <div class="svc-foot"><span>60 min</span><button class="svc-book" data-svc="Corte Botânico">Reservar →</button></div>
+      </article>
+      <article class="svc" data-reveal style="--d:.08s">
+        <div class="arch"><img src="https://picsum.photos/seed/herbal-hair-spa/560/740" alt="Spa capilar herbal" loading="lazy"></div>
+        <div class="svc-top"><h3>Spa Capilar Herbal</h3><span class="pr">R$ 210</span></div>
+        <p>Esfoliação do couro, óleos essenciais e massagem prolongada. O detox que seus fios pedem.</p>
+        <div class="svc-foot"><span>75 min</span><button class="svc-book" data-svc="Spa Capilar Herbal">Reservar →</button></div>
+      </article>
+      <article class="svc" data-reveal style="--d:.16s">
+        <div class="arch"><img src="https://picsum.photos/seed/vegetal-hair-color/560/740" alt="Coloração vegetal" loading="lazy"></div>
+        <div class="svc-top"><h3>Coloração Vegetal</h3><span class="pr">R$ 320</span></div>
+        <p>Cor viva sem amônia, com pigmentos de origem vegetal. Cobertura gentil e brilho de seda.</p>
+        <div class="svc-foot"><span>2h30</span><button class="svc-book" data-svc="Coloração Vegetal">Reservar →</button></div>
+      </article>
+      <article class="svc" data-reveal>
+        <div class="arch"><img src="https://picsum.photos/seed/soleil-balayage/560/740" alt="Balayage soleil" loading="lazy"></div>
+        <div class="svc-top"><h3>Balayage Soleil</h3><span class="pr">R$ 460</span></div>
+        <p>Iluminação à mão livre em tons de sol nascente — nosso serviço mais pedido do verão.</p>
+        <div class="svc-foot"><span>3h</span><button class="svc-book" data-svc="Balayage Soleil">Reservar →</button></div>
+      </article>
+      <article class="svc" data-reveal style="--d:.08s">
+        <div class="arch"><img src="https://picsum.photos/seed/natural-manicure-spa/560/740" alt="Manicure natural" loading="lazy"></div>
+        <div class="svc-top"><h3>Manicure Natural</h3><span class="pr">R$ 88</span></div>
+        <p>Esmaltação limpa, cutilagem cuidadosa e hidratação com manteiga de karité. Mãos de algodão.</p>
+        <div class="svc-foot"><span>45 min</span><button class="svc-book" data-svc="Manicure Natural">Reservar →</button></div>
+      </article>
+      <article class="svc" data-reveal style="--d:.16s">
+        <div class="arch"><img src="https://picsum.photos/seed/sereno-facial-ritual/560/740" alt="Ritual facial" loading="lazy"></div>
+        <div class="svc-top"><h3>Ritual Facial Sereno</h3><span class="pr">R$ 260</span></div>
+        <p>Limpeza profunda com argilas, alta frequência e máscara de chá branco. Pele renovada e serena.</p>
+        <div class="svc-foot"><span>1h20</span><button class="svc-book" data-svc="Ritual Facial Sereno">Reservar →</button></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EXPERIÊNCIA ========== -->
+<section class="dark" id="experiencia">
+  <div class="wrap exp-grid">
+    <div class="exp-left" data-reveal>
+      <span class="micro">A experiência</span>
+      <h2>Quatro tempos de <em>serenidade</em></h2>
+      <p>Passe o mouse (ou toque) em cada tempo para ver a cena. Do chá de chegada ao kit de casa, tudo foi pensado para desacelerar.</p>
+      <div class="exp-stage" aria-hidden="true">
+        <div class="arch">
+          <img class="on" data-exp="1" src="https://picsum.photos/seed/sereno-chegada-cha/640/850" alt="Chegada com chá" loading="lazy">
+          <img data-exp="2" src="https://picsum.photos/seed/sereno-diagnostico-botanico/640/850" alt="Diagnóstico botânico" loading="lazy">
+          <img data-exp="3" src="https://picsum.photos/seed/sereno-ritual-verde/640/850" alt="Ritual em execução" loading="lazy">
+          <img data-exp="4" src="https://picsum.photos/seed/sereno-despedida-kit/640/850" alt="Despedida com kit" loading="lazy">
+        </div>
+      </div>
+    </div>
+    <div id="expItems">
+      <div class="exp-item active" data-step="1" data-reveal>
+        <span class="exp-num">I</span>
+        <div><h3>Chegada</h3><p>Você é recebida com chá da estação, aromaterapia no ar e cinco minutos só seus antes de qualquer coisa. O relógio pode esperar.</p>
+        <img class="mob-img" src="https://picsum.photos/seed/sereno-chegada-cha/620/350" alt="Chegada com chá" loading="lazy"></div>
+      </div>
+      <div class="exp-item" data-step="2" data-reveal style="--d:.08s">
+        <span class="exp-num">II</span>
+        <div><h3>Diagnóstico botânico</h3><p>Análise de fio, couro cabeludo e rotina com lupa profissional. Só então desenhamos o ritual certo — nada de pacote pronto.</p>
+        <img class="mob-img" src="https://picsum.photos/seed/sereno-diagnostico-botanico/620/350" alt="Diagnóstico botânico" loading="lazy"></div>
+      </div>
+      <div class="exp-item" data-step="3" data-reveal style="--d:.16s">
+        <span class="exp-num">III</span>
+        <div><h3>Ritual</h3><p>A técnica em si, com ativos vegetais e massagem prolongada. Luz baixa, playlist de spa e silêncio quando você quiser.</p>
+        <img class="mob-img" src="https://picsum.photos/seed/sereno-ritual-verde/620/350" alt="Ritual em execução" loading="lazy"></div>
+      </div>
+      <div class="exp-item" data-step="4" data-reveal style="--d:.24s">
+        <span class="exp-num">IV</span>
+        <div><h3>Despedida</h3><p>Finalização, dicas de manutenção e um mini kit home care de brinde. Você sai sabendo cuidar do resultado em casa.</p>
+        <img class="mob-img" src="https://picsum.photos/seed/sereno-despedida-kit/620/350" alt="Despedida com kit" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALERIA ========== -->
+<section id="galeria">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="micro">Nosso jardim de resultados</span>
+      <h2>Galeria <em>viva</em></h2>
+      <p>Cada cliente, uma história. Fotos reais, sem filtro — como a gente gosta.</p>
+    </div>
+    <div class="gal" data-reveal>
+      <figure class="g1"><div class="arch"><img src="https://picsum.photos/seed/gallery-spa-interior/620/900" alt="Interior do spa" loading="lazy"></div><figcaption>o salão · jardins</figcaption></figure>
+      <figure class="g2 sq"><div class="arch"><img src="https://picsum.photos/seed/gallery-balayage-sun/560/420" alt="Balayage" loading="lazy"></div><figcaption>balayage soleil</figcaption></figure>
+      <figure class="g3 sq"><div class="arch"><img src="https://picsum.photos/seed/gallery-herbal-oils/560/420" alt="Óleos herbais" loading="lazy"></div><figcaption>óleos da casa</figcaption></figure>
+      <figure class="g4"><div class="arch"><img src="https://picsum.photos/seed/gallery-botanical-cut/620/430" alt="Corte botânico" loading="lazy"></div><figcaption>corte botânico</figcaption></figure>
+      <figure class="g5 sq"><div class="arch"><img src="https://picsum.photos/seed/gallery-facial-glow/560/420" alt="Ritual facial" loading="lazy"></div><figcaption>ritual facial</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EQUIPE ========== -->
+<section class="team" id="equipe">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="micro">Quem cuida de você</span>
+      <h2>Mãos <em>serenas</em></h2>
+      <p>Especialistas em constante formação, com um jeito de atender que não tem pressa.</p>
+    </div>
+    <div class="team-row">
+      <figure class="person" data-reveal>
+        <div class="ring"><img src="https://picsum.photos/seed/team-helena-color/420/420" alt="Helena Prado" loading="lazy"></div>
+        <h3>Helena Prado</h3><span>Fundadora · cor vegetal</span>
+        <p>15 anos colorindo com pigmentos de planta. Criadora do Balayage Soleil.</p>
+      </figure>
+      <figure class="person" data-reveal style="--d:.1s">
+        <div class="ring"><img src="https://picsum.photos/seed/team-rafael-cuts/420/420" alt="Rafael Nunes" loading="lazy"></div>
+        <h3>Rafael Nunes</h3><span>Hair stylist · cortes</span>
+        <p>Cortes que funcionam na vida real — do home office à festa de sábado.</p>
+      </figure>
+      <figure class="person" data-reveal style="--d:.2s">
+        <div class="ring"><img src="https://picsum.photos/seed/team-bia-spa/420/420" alt="Bia Tavares" loading="lazy"></div>
+        <h3>Bia Tavares</h3><span>Spa & pele</span>
+        <p>Esteticista botânica, especialista em peles sensíveis e rituais faciais.</p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DEPOIMENTOS ========== -->
+<section class="quotes" id="depoimentos">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="micro">Elas contam melhor</span>
+      <h2>Palavras de quem <em>voltou</em></h2>
+    </div>
+    <div class="q-stage" id="qStage" data-reveal style="--d:.12s">
+      <div class="q-slide on">
+        <blockquote>Saí com o cabelo mais bonito da minha vida e a alma lavada. O chá de hibisco no final foi a cereja do bolo.</blockquote>
+        <div class="q-who"><b>Marina C.</b> · Spa Capilar Herbal</div>
+        <div class="q-stars">★★★★★</div>
+      </div>
+      <div class="q-slide">
+        <blockquote>Nunca imaginei que coloração pudesse ser tão gentil. Meu couro agradece — e o brilho fala por si.</blockquote>
+        <div class="q-who"><b>Patrícia L.</b> · Coloração Vegetal</div>
+        <div class="q-stars">★★★★★</div>
+      </div>
+      <div class="q-slide">
+        <blockquote>O Rafael entendeu em 5 minutos o corte que eu queria há 5 anos. Virou meu programa favorito de sexta.</blockquote>
+        <div class="q-who"><b>Juliana R.</b> · Corte Botânico</div>
+        <div class="q-stars">★★★★★</div>
+      </div>
+      <div class="q-slide">
+        <blockquote>Fiz o Dia de Renovo com minha mãe. Choramos de rir e de relaxar. Já virou tradição de aniversário.</blockquote>
+        <div class="q-who"><b>Fernanda &amp; Dona Célia</b> · Ritual Dia de Renovo</div>
+        <div class="q-stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="q-dots" id="qDots" data-reveal style="--d:.2s"></div>
+    <div style="text-align:center" data-reveal style="--d:.28s">
+      <span class="q-chip">★ <b>4,9</b> de média · mais de <b>1.800</b> avaliações no Google</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== RITUAIS / PACOTES ========== -->
+<section id="rituais">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="micro">Para se entregar por inteiro</span>
+      <h2>Rituais <em>completos</em></h2>
+      <p>Combinações pensadas para quem quer mais que um serviço — quer uma tarde inteira para si.</p>
+    </div>
+    <div data-reveal>
+      <div class="pkg">
+        <h3>Meia Serenidade<small>120 minutos</small></h3>
+        <p class="inc"><b>Spa capilar herbal</b> ✦ manicure natural ✦ chá da estação ✦ aromaterapia</p>
+        <span class="pv">R$ 290</span>
+        <button class="btn btn-ghost" data-pkg="Meia Serenidade"><span>Reservar</span></button>
+      </div>
+      <div class="pkg pkg-feat">
+        <span class="pkg-tag">✦ o mais presenteado</span>
+        <h3>Sereno Inteiro<small>180 minutos</small></h3>
+        <p class="inc"><b>Spa capilar + corte botânico</b> ✦ ritual facial ✦ massagem de ombros ✦ espumante ou chá premium</p>
+        <span class="pv">R$ 520</span>
+        <button class="btn btn-light" data-pkg="Sereno Inteiro"><span>Reservar</span></button>
+      </div>
+      <div class="pkg">
+        <h3>Dia de Renovo<small>4 horas</small></h3>
+        <p class="inc"><b>Tudo do Sereno Inteiro</b> ✦ manicure & pedicure ✦ almoço leve ✦ kit home care de presente</p>
+        <span class="pv">R$ 780</span>
+        <button class="btn btn-ghost" data-pkg="Dia de Renovo"><span>Reservar</span></button>
+      </div>
+    </div>
+    <p class="pkg-note" data-reveal>Vale-presente disponível em todos os rituais — entregue em envelope de papel semente. 🌱</p>
+  </div>
+</section>
+
+<!-- ========== AGENDAR ========== -->
+<section class="book" id="agendar">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="micro">Reservas</span>
+      <h2>Guarde um tempo <em>para você</em></h2>
+      <p>Escolha tudo em menos de um minuto. A confirmação chega na hora no seu WhatsApp.</p>
+    </div>
+    <div class="book-grid">
+      <div class="book-visual" data-reveal>
+        <figure class="arch">
+          <img src="https://picsum.photos/seed/sereno-booking-ambiance/720/900" alt="Ambiente do Sereno" loading="lazy">
+        </figure>
+        <div class="ov"><b>Sua poltrona está esperando.</b><span>Hoje ainda temos horários livres — reserve agora e ganhe o chá da estação.</span></div>
+        <div class="info-rows">
+          <div><b>Onde</b><span>R. das Oliveiras, 88 — Jardins, São Paulo</span></div>
+          <div><b>Quando</b><span>Ter–Dom · 9h às 20h (segunda fechamos)</span></div>
+          <div><b>Contato</b><span>(11) 99123-4567 · ola@sereno.spa</span></div>
+          <div><b>Extra</b><span>Valet gratuito · acessível · pet friendly 🐾</span></div>
+        </div>
+      </div>
+
+      <!-- formulário -->
+      <div class="form-card" data-reveal style="--d:.12s">
+        <form id="bookForm" novalidate>
+          <div class="fgroup" id="gSvc">
+            <span class="micro">1 · Serviço</span>
+            <div class="pills" id="svcPills"></div>
+          </div>
+          <div class="fgroup" id="gPro">
+            <span class="micro">2 · Profissional</span>
+            <div class="pills" id="proPills"></div>
+          </div>
+          <div class="fgroup" id="gDate">
+            <span class="micro">3 · Dia</span>
+            <div class="days" id="dayRow"></div>
+          </div>
+          <div class="fgroup" id="gTime">
+            <span class="micro">4 · Horário</span>
+            <div class="slots" id="slotRow"><p class="hint">Escolha um dia para ver os horários livres ✦</p></div>
+          </div>
+          <div class="fgroup names" id="gName">
+            <div class="fld"><label for="fName">Seu nome</label><input type="text" id="fName" placeholder="Como te chamamos?" autocomplete="name"></div>
+            <div class="fld"><label for="fPhone">WhatsApp</label><input type="tel" id="fPhone" placeholder="(11) 99999-9999" autocomplete="tel"></div>
+          </div>
+          <div class="summary">
+            <div><span>Serviço</span><b id="sumSvc">—</b></div>
+            <div><span>Profissional</span><b id="sumPro">—</b></div>
+            <div><span>Quando</span><b id="sumWhen">—</b></div>
+            <div><span>Investimento</span><b id="sumPrice">—</b></div>
+          </div>
+          <p class="ferr" id="formErr" role="alert"></p>
+          <button type="submit" class="btn btn-fill"><span>Confirmar agendamento ✦</span></button>
+        </form>
+        <div class="done" id="doneBox">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" pathLength="100"/><path d="M20 33l9 9 15-17" pathLength="100"/></svg>
+          <h3>Tudo reservado!</h3>
+          <div class="code" id="doneCode">SER-0000</div>
+          <p id="doneMsg">Enviamos a confirmação no seu WhatsApp. Chegue 5 minutinhos antes — o chá já estará no ponto. 🍵</p>
+          <div class="done-btns">
+            <button class="btn btn-ghost" id="calBtn2"><span>Adicionar ao calendário</span></button>
+            <button class="btn btn-fill" id="resetBtn"><span>Nova reserva</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section id="faq" style="background:var(--bone)">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="micro">Fique à vontade</span>
+      <h2>Perguntas <em>frequentes</em></h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item" data-reveal>
+        <button class="faq-q">Os produtos são realmente veganos?<span class="pm">+</span></button>
+        <div class="faq-a"><div><p>Sim — 100% veganos e cruelty-free, com prioridade para marcas nacionais de formulação botânica. Se você tem alguma sensibilidade, avise na reserva que adaptamos todo o ritual.</p></div></div>
+      </div>
+      <div class="faq-item" data-reveal style="--d:.06s">
+        <button class="faq-q">Gestantes podem fazer os tratamentos?<span class="pm">+</span></button>
+        <div class="faq-a"><div><p>Podem, com carinho redobrado. Temos protocolos específicos sem óleos essenciais contraindicados, poltrona reclinável e apoio para os pés. Converse com a Helena no diagnóstico.</p></div></div>
+      </div>
+      <div class="faq-item" data-reveal style="--d:.12s">
+        <button class="faq-q">Como funciona o reagendamento?<span class="pm">+</span></button>
+        <div class="faq-a"><div><p>Gratuito até 24h antes, direto pelo link do WhatsApp de confirmação. Dentro de 24h, mantemos a vaga com 30% do valor como cortesia de reserva.</p></div></div>
+      </div>
+      <div class="faq-item" data-reveal style="--d:.18s">
+        <button class="faq-q">Tem estacionamento? É acessível?<span class="pm">+</span></button>
+        <div class="faq-a"><div><p>Temos valet gratuito no local e a casa é totalmente acessível: entrada sem degraus, banheiro adaptado e espaço para cadeirantes em todas as estações. Pets bem-comportados também são bem-vindos.</p></div></div>
+      </div>
+      <div class="faq-item" data-reveal style="--d:.24s">
+        <button class="faq-q">Vocês atendem todos os tipos de cabelo?<span class="pm">+</span></button>
+        <div class="faq-a"><div><p>Todos, do liso 1A ao crespo 4C — e atendemos homens e crianças também. Nossa equipe tem formação específica em cabelos cacheados e em transição capilar.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div style="text-align:center" data-reveal>
+      <span class="micro" style="justify-content:center">Receba novidades & mimos</span>
+      <div class="news" style="margin-top:1.4rem">
+        <input type="email" id="newsEmail" placeholder="seu melhor e-mail" aria-label="E-mail para newsletter">
+        <button id="newsBtn">Assinar ✦</button>
+      </div>
+    </div>
+    <div class="foot-grid">
+      <div><h5>A casa</h5><p>Beleza em estado natural desde 2016. Um spa botânico de bairro com alma de retiro.</p></div>
+      <div><h5>Horários</h5><p>Ter–Sex · 9h–20h<br>Sáb · 9h–18h<br>Dom · 10h–16h<br>Seg · fechado</p></div>
+      <div><h5>Contato</h5><a href="#agendar">Reservar online</a><a href="#">(11) 99123-4567</a><a href="#">ola@sereno.spa</a></div>
+      <div><h5>Siga</h5><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Pinterest</a></div>
+    </div>
+    <div class="foot-word" aria-hidden="true">SERENO</div>
+    <div class="foot-base">
+      <span>© <span id="year"></span> Sereno · Salão & Spa Botânico — página de demonstração</span>
+      <span>feito com 🌿 e um bom chá</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#agendar" class="fab" id="fab"><span>Agendar ✦</span></a>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+"use strict";
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = s=>document.querySelector(s);
+const $$ = s=>[...document.querySelectorAll(s)];
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+
+/* ---------- marquees ---------- */
+const topItems=["aberto ter–dom · 9h às 20h","produtos 100% veganos","valet gratuito no local","pet friendly","reservas online com confirmação imediata"];
+$("#topMq").innerHTML=(topItems.map(t=>`<i>${t}</i><i style="opacity:.5">✦</i>`).join("")).repeat(3);
+const bandItems=["spa capilar herbal","corte botânico","coloração vegetal","balayage soleil","ritual facial","manicure natural"];
+$("#bandMq").innerHTML=(bandItems.map(t=>`<i>${t}</i><i class="s">✦</i>`).join("")).repeat(3);
+
+/* ---------- hero h1: divide em palavras ---------- */
+(function splitH1(){
+  const h1=$("#heroH1");
+  const html=h1.innerHTML; /* mantém <em> */
+  const tmp=document.createElement("div"); tmp.innerHTML=html;
+  let i=0;
+  const walk=node=>{
+    [...node.childNodes].forEach(ch=>{
+      if(ch.nodeType===3){
+        const frag=document.createDocumentFragment();
+        ch.textContent.split(/(\s+)/).forEach(part=>{
+          if(!part.trim()){ frag.appendChild(document.createTextNode(part)); return; }
+          const s=document.createElement("span"); s.className="w"; s.style.setProperty("--i",i++); s.textContent=part;
+          frag.appendChild(s);
+        });
+        node.replaceChild(frag,ch);
+      } else if(ch.nodeType===1) walk(ch);
+    });
+  };
+  walk(tmp);
+  h1.innerHTML=tmp.innerHTML;
+  setTimeout(()=>h1.classList.add("in"),120);
+})();
+
+/* ---------- nav / progresso / fab ---------- */
+const nav=$("#nav"), fab=$("#fab"), prog=$("#progress");
+const onScroll=()=>{
+  nav.classList.toggle("scrolled",scrollY>24);
+  const max=document.documentElement.scrollHeight-innerHeight;
+  prog.style.width=(max>0?scrollY/max*100:0)+"%";
+};
+addEventListener("scroll",onScroll,{passive:true}); onScroll();
+
+const ag=$("#agendar");
+let agVisible=false;
+new IntersectionObserver(es=>{es.forEach(e=>agVisible=e.isIntersecting);},{threshold:.08}).observe(ag);
+addEventListener("scroll",()=>{
+  if(scrollY>560&&!agVisible) fab.classList.add("show"); else fab.classList.remove("show");
+},{passive:true});
+
+$("#burger").addEventListener("click",()=>$("#mmenu").classList.toggle("open"));
+$$("#mmenu a").forEach(a=>a.addEventListener("click",()=>$("#mmenu").classList.remove("open")));
+
+/* ---------- reveal IO ---------- */
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} });
+},{threshold:.12,rootMargin:"0px 0px -36px 0px"});
+$$("[data-reveal]").forEach(el=>io.observe(el));
+
+/* ---------- parallax da palavra gigante ---------- */
+const giant=$("#giant");
+if(!reduced && giant){
+  addEventListener("scroll",()=>{
+    const y=clamp(scrollY,0,900);
+    giant.style.transform=`translate(-50%,-50%) translateY(${y*0.18}px)`;
+  },{passive:true});
+}
+
+/* ---------- experiência: troca de imagem ---------- */
+const expItems=$$(".exp-item"), expImgs=$$(".exp-stage img");
+function setExp(n){
+  expItems.forEach(it=>it.classList.toggle("active",+it.dataset.step===n));
+  expImgs.forEach(im=>im.classList.toggle("on",+im.dataset.exp===n));
+}
+expItems.forEach(it=>{
+  it.addEventListener("mouseenter",()=>setExp(+it.dataset.step));
+  it.addEventListener("click",()=>setExp(+it.dataset.step));
+});
+
+/* ---------- slider de depoimentos ---------- */
+(function quotes(){
+  const slides=$$(".q-slide"), dots=$("#qDots");
+  slides.forEach((_,i)=>{
+    const b=document.createElement("button");
+    b.className="q-dot"+(i===0?" on":""); b.setAttribute("aria-label","Depoimento "+(i+1));
+    b.addEventListener("click",()=>go(i));
+    dots.appendChild(b);
+  });
+  let idx=0, timer=null;
+  function go(n){
+    idx=(n+slides.length)%slides.length;
+    slides.forEach((s,i)=>s.classList.toggle("on",i===idx));
+    $$(".q-dot").forEach((d,i)=>d.classList.toggle("on",i===idx));
+  }
+  function start(){ if(!reduced){ clearInterval(timer); timer=setInterval(()=>go(idx+1),5200);} }
+  start();
+  $("#qStage").addEventListener("mouseenter",()=>clearInterval(timer));
+  $("#qStage").addEventListener("mouseleave",start);
+})();
+
+/* ---------- toast ---------- */
+let tt;
+function toast(msg){
+  const t=$("#toast"); t.textContent=msg; t.classList.add("show");
+  clearTimeout(tt); tt=setTimeout(()=>t.classList.remove("show"),2900);
+}
+$("#newsBtn").addEventListener("click",()=>{
+  const v=$("#newsEmail").value.trim();
+  if(/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){ toast("Bem-vinda ao jardim! 🌿 Verifique seu e-mail."); $("#newsEmail").value=""; }
+  else toast("Digite um e-mail válido para assinar ✦");
+});
+$("#calBtn2").addEventListener("click",()=>toast("Convite de calendário enviado (demo) ✦"));
+
+/* ---------- FAQ ---------- */
+$$(".faq-item").forEach(it=>{
+  it.querySelector(".faq-q").addEventListener("click",()=>{
+    const open=it.classList.contains("open");
+    $$(".faq-item").forEach(i=>i.classList.remove("open"));
+    if(!open) it.classList.add("open");
+  });
+});
+
+/* =========================================================
+   AGENDAMENTO
+========================================================= */
+const SERVICES=[
+ {n:"Corte Botânico",d:"60 min",p:190},
+ {n:"Spa Capilar Herbal",d:"75 min",p:210},
+ {n:"Coloração Vegetal",d:"2h30",p:320},
+ {n:"Balayage Soleil",d:"3h",p:460},
+ {n:"Manicure Natural",d:"45 min",p:88},
+ {n:"Ritual Facial Sereno",d:"1h20",p:260},
+ {n:"Ritual Meia Serenidade",d:"2h",p:290},
+ {n:"Ritual Sereno Inteiro",d:"3h",p:520}];
+const PROS=["Sem preferência","Helena","Rafael","Bia"];
+const SLOTS=["09:30","10:30","11:30","13:00","14:00","15:00","16:00","17:00","18:00","19:00"];
+const DAYS=["dom","seg","ter","qua","qui","sex","sáb"];
+const state={svc:null,pro:null,date:null,label:"",time:null};
+
+const svcPills=$("#svcPills"), proPills=$("#proPills"),
+      dayRow=$("#dayRow"), slotRow=$("#slotRow"),
+      formErr=$("#formErr"), form=$("#bookForm");
+
+svcPills.innerHTML=SERVICES.map((s,i)=>`<button type="button" class="pill" data-i="${i}">${s.n}<small>${s.d} · R$ ${s.p}</small></button>`).join("");
+proPills.innerHTML=PROS.map((p,i)=>`<button type="button" class="pill" data-i="${i}">${p}</button>`).join("");
+
+svcPills.addEventListener("click",e=>{
+  const b=e.target.closest(".pill"); if(!b)return;
+  $$("#svcPills .pill").forEach(x=>x.classList.remove("sel")); b.classList.add("sel");
+  state.svc=SERVICES[+b.dataset.i]; render();
+});
+proPills.addEventListener("click",e=>{
+  const b=e.target.closest(".pill"); if(!b)return;
+  $$("#proPills .pill").forEach(x=>x.classList.remove("sel")); b.classList.add("sel");
+  state.pro=PROS[+b.dataset.i]; render();
+});
+
+/* pré-seleção vinda dos cards/pacotes */
+function preselect(name){
+  const i=SERVICES.findIndex(s=>s.n===name);
+  if(i<0)return;
+  $$("#svcPills .pill").forEach((x,j)=>x.classList.toggle("sel",j===i));
+  state.svc=SERVICES[i]; render();
+}
+$$(".svc-book").forEach(b=>b.addEventListener("click",()=>{
+  preselect(b.dataset.svc);
+  $("#agendar").scrollIntoView({behavior:reduced?"auto":"smooth"});
+  toast(`“${b.dataset.svc}” selecionado — finalize sua reserva ✦`);
+}));
+$$("[data-pkg]").forEach(b=>b.addEventListener("click",()=>{
+  const map={"Meia Serenidade":"Ritual Meia Serenidade","Sereno Inteiro":"Ritual Sereno Inteiro","Dia de Renovo":"Ritual Sereno Inteiro"};
+  preselect(map[b.dataset.pkg]);
+  $("#agendar").scrollIntoView({behavior:reduced?"auto":"smooth"});
+  toast(`Ritual “${b.dataset.pkg}” selecionado ✦`);
+}));
+
+/* dias */
+(function buildDays(){
+  let html="";
+  for(let i=0;i<7;i++){
+    const d=new Date(); d.setDate(d.getDate()+i);
+    const iso=d.toISOString().slice(0,10);
+    const closed=d.getDay()===1; /* segunda fechado */
+    const label=`${DAYS[d.getDay()]} ${String(d.getDate()).padStart(2,"0")}`;
+    html+=`<button type="button" class="day" data-iso="${iso}" data-label="${label}" ${closed?"disabled":""}>
+      <small>${DAYS[d.getDay()]}</small><b>${String(d.getDate()).padStart(2,"0")}</b>${closed?'<small>fechado</small>':""}
+    </button>`;
+  }
+  dayRow.innerHTML=html;
+})();
+dayRow.addEventListener("click",e=>{
+  const b=e.target.closest(".day"); if(!b||b.disabled)return;
+  $$(".day").forEach(x=>x.classList.remove("sel")); b.classList.add("sel");
+  state.date=b.dataset.iso; state.label=b.dataset.label; state.time=null;
+  buildSlots(state.date); render();
+});
+
+function hash(str){ let h=0; for(let i=0;i<str.length;i++) h=((h<<5)-h+str.charCodeAt(i))|0; return Math.abs(h); }
+function buildSlots(iso){
+  const now=new Date();
+  const btns=SLOTS.map(s=>{
+    let off=hash(iso+s)%10<3; /* ~30% ocupados */
+    if(iso===new Date().toISOString().slice(0,10)){
+      const [hh,mm]=s.split(":").map(Number);
+      if(hh<now.getHours()||(hh===now.getHours()&&mm<=now.getMinutes())) off=true;
+    }
+    return `<button type="button" class="slot" data-t="${s}" ${off?"disabled":""}>${s}</button>`;
+  });
+  const freeCount=btns.filter(b=>!b.includes("disabled")).length;
+  slotRow.innerHTML=btns.join("")+(freeCount===0?'<p class="hint">Dia lotado 😔 — escolha outra data.</p>':"");
+}
+slotRow.addEventListener("click",e=>{
+  const b=e.target.closest(".slot"); if(!b||b.disabled)return;
+  $$(".slot").forEach(x=>x.classList.remove("sel")); b.classList.add("sel");
+  state.time=b.dataset.t; render();
+});
+
+/* resumo ao vivo */
+function render(){
+  $("#sumSvc").textContent = state.svc?`${state.svc.n} · ${state.svc.d}`:"—";
+  $("#sumPro").textContent = state.pro||"—";
+  $("#sumWhen").textContent = state.date?`${state.label} · ${state.time||"--:--"}`:"—";
+  $("#sumPrice").textContent = state.svc?`R$ ${state.svc.p}`:"—";
+}
+
+function shake(id){
+  const g=$(id); g.classList.remove("needs"); void g.offsetWidth; g.classList.add("needs");
+}
+
+form.addEventListener("submit",e=>{
+  e.preventDefault();
+  formErr.textContent="";
+  const name=$("#fName").value.trim(), phone=$("#fPhone").value.replace(/\D/g,"");
+  if(!state.svc){ formErr.textContent="Escolha um serviço para continuar ✦"; shake("#gSvc"); return; }
+  if(!state.pro){ formErr.textContent="Com quem você quer se cuidar? ✦"; shake("#gPro"); return; }
+  if(!state.date||!state.time){ formErr.textContent="Selecione dia e horário ✦"; shake(!state.date?"#gDate":"#gTime"); return; }
+  if(name.length<2||phone.length<10){ formErr.textContent="Preencha nome e WhatsApp para confirmarmos ✦"; shake("#gName"); return; }
+
+  const code="SER-"+Math.random().toString(36).slice(2,6).toUpperCase();
+  $("#doneCode").textContent=code;
+  $("#doneMsg").innerHTML=`${name}, seu <b>${state.svc.n}</b> com ${state.pro} está marcado para <b>${state.label} às ${state.time}</b>. Enviamos tudo no seu WhatsApp — o chá já estará no ponto. 🍵`;
+  form.style.display="none";
+  const done=$("#doneBox"); done.classList.add("show");
+  requestAnimationFrame(()=>done.classList.add("draw"));
+  toast("Reserva confirmada! Até breve ✦");
+});
+
+$("#resetBtn").addEventListener("click",()=>{
+  Object.assign(state,{svc:null,pro:null,date:null,label:"",time:null});
+  $$(".pill,.day,.slot").forEach(x=>x.classList.remove("sel"));
+  $("#fName").value=""; $("#fPhone").value="";
+  slotRow.innerHTML='<p class="hint">Escolha um dia para ver os horários livres ✦</p>';
+  render();
+  const done=$("#doneBox"); done.classList.remove("show","draw");
+  form.style.display="block";
+});
+
+render();
+$("#year").textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
+
+
